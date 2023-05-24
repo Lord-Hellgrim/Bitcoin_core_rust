@@ -1,3 +1,9 @@
+# This file is just to help visualize the dependency graph of the
+# Bitcoin Core codebase
+# This project is mostly to help me understand Bitcoin and the internet
+# in general
+
+
 import networkx as nx
 import matplotlib.pyplot as plt
 

@@ -9,8 +9,11 @@ import matplotlib.pyplot as plt
 
 
 G = nx.DiGraph()
+# depedeps = dependencies and their dependencies
+############################# bitcoind.cpp depedeps begin ###################################
 
 # bitcoind.cpp
+G.add_edge("config/bitcoin-config.h", "bitcoind.cpp")
 G.add_edge("chainparams.h", "bitcoind.cpp")
 G.add_edge("common/args.h", "bitcoind.cpp")
 G.add_edge("common/init.h", "bitcoind.cpp")
@@ -166,6 +169,132 @@ G.add_edge("string_view", "util/strencodings.h")
 G.add_edge("system_error", "util/strencodings.h")
 G.add_edge("type_traits", "util/strencodings.h")
 G.add_edge("vector", "util/strencodings.h")
+
+# util/syscall_sandbox.h
+G.add_node("util/syscall_sandbox.h")
+
+# util/syserror.h
+G.add_edge("string", "util/syserror.h")
+
+# util/system.h
+G.add_edge("config/bitcoin-config.h", "util/system.h")
+G.add_edge("compat/assumptions.h", "util/system.h")
+G.add_edge("compat/compat.h", "util/system.h")
+G.add_edge("any", "util/system.h")
+G.add_edge("set", "util/system.h")
+G.add_edge("stdint.h", "util/system.h")
+G.add_edge("string", "util/system.h")
+
+# util/threadnames.h
+G.add_edge("string", "util/threadnames.h")
+
+# util/tokenpipe.h
+G.add_edge("cstdint", "util/tokenpipe.h")
+G.add_edge("optional", "util/tokenpipe.h")
+
+# util/translation.h
+G.add_edge("tinyformat.h", "util/translation.h")
+G.add_edge("functional", "util/translation.h")
+G.add_edge("string", "util/translation.h")
+
+########################### bitcoind.cpp depedeps end ###############################
+
+########################### addrdb.cpp depedeps begin ##############################
+
+# addrdb.cpp
+G.add_edge("addrdb.h", "addrdb.cpp")
+G.add_edge("addrman.h", "addrdb.cpp")
+G.add_edge("chainparams.h", "addrdb.cpp")
+G.add_edge("clientversion.h", "addrdb.cpp")
+G.add_edge("common/args.h", "addrdb.cpp")
+G.add_edge("cstdint", "addrdb.cpp")
+G.add_edge("hash.h", "addrdb.cpp")
+G.add_edge("logging.h", "addrdb.cpp")
+G.add_edge("logging/timer.h", "addrdb.cpp")
+G.add_edge("netbase.h", "addrdb.cpp")
+G.add_edge("netgroup.h", "addrdb.cpp")
+G.add_edge("random.h", "addrdb.cpp")
+G.add_edge("streams.h", "addrdb.cpp")
+G.add_edge("tinyformat.h", "addrdb.cpp")
+G.add_edge("univalue.h", "addrdb.cpp")
+G.add_edge("util/fs.h", "addrdb.cpp")
+G.add_edge("util/fs_helpers.h", "addrdb.cpp")
+G.add_edge("util/settings.h", "addrdb.cpp")
+G.add_edge("util/translation.h", "addrdb.cpp")
+
+# addrdb.h
+G.add_edge("net_types.h", "addrdb.h")
+G.add_edge("univalue.h", "addrdb.h")
+G.add_edge("util/fs.h", "addrdb.h")
+G.add_edge("optional", "addrdb.h")
+G.add_edge("vector", "addrdb.h")
+
+# addrman.h
+G.add_edge("netaddress.h", "addrman.h")
+G.add_edge("netgroup.h", "addrman.h")
+G.add_edge("protocol.h", "addrman.h")
+G.add_edge("streams.h", "addrman.h")
+G.add_edge("util/time.h", "addrman.h")
+G.add_edge("cstdint", "addrman.h")
+G.add_edge("memory", "addrman.h")
+G.add_edge("optional", "addrman.h")
+G.add_edge("utility", "addrman.h")
+G.add_edge("vector", "addrman.h")
+
+# hash.h
+G.add_edge("attributes.h", "hash.h")
+G.add_edge("crypto/common.h", "hash.h")
+G.add_edge("crypto/ripemd160.h", "hash.h")
+G.add_edge("crypto/sha256.h", "hash.h")
+G.add_edge("prevector.h", "hash.h")
+G.add_edge("serialize.h", "hash.h")
+G.add_edge("span.h", "hash.h")
+G.add_edge("uint256.h", "hash.h")
+G.add_edge("version.h", "hash.h")
+G.add_edge("string", "hash.h")
+G.add_edge("vector", "hash.h")
+
+# logging.h
+G.add_edge("threadsafety.h", "logging.h")
+G.add_edge("tinyformat.h", "logging.h")
+G.add_edge("util/fs.h", "logging.h")
+G.add_edge("util/string.h", "logging.h")
+G.add_edge("atomic", "logging.h")
+G.add_edge("cstdint", "logging.h")
+G.add_edge("functional", "logging.h")
+G.add_edge("list", "logging.h")
+G.add_edge("mutex", "logging.h")
+G.add_edge("string", "logging.h")
+G.add_edge("unordered_map", "logging.h")
+G.add_edge("vector", "logging.h")
+
+# logging/timer.h
+G.add_edge("logging.h", "logging/timer.h")
+G.add_edge("util/macros.h", "logging/timer.h")
+G.add_edge("util/time.h", "logging/timer.h")
+G.add_edge("util/types.h", "logging/timer.h")
+G.add_edge("chrono", "logging/timer.h")
+G.add_edge("optional", "logging/timer.h")
+G.add_edge("string", "logging/timer.h")
+
+# netbase.h
+G.add_edge("config/bitcoin-config.h", "netbase.h")
+G.add_edge("compat/compat.h", "netbase.h")
+G.add_edge("netaddress.h", "netbase.h")
+G.add_edge("serialize.h", "netbase.h")
+G.add_edge("util/sock.h", "netbase.h")
+G.add_edge("functional", "netbase.h")
+G.add_edge("memory", "netbase.h")
+G.add_edge("stdint.h", "netbase.h")
+G.add_edge("string", "netbase.h")
+G.add_edge("type_traits", "netbase.h")
+G.add_edge("vector", "netbase.h")
+
+# netgroup.h
+G.add_edge("netaddress.h", "netgroup.h")
+G.add_edge("uint256.h", "netgroup.h")
+G.add_edge("vector", "netgroup.h")
+
 
 nx.draw_spring(G, with_labels=True)
 
